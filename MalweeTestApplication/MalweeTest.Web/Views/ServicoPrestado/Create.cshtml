@@ -1,0 +1,102 @@
+﻿@model MalweeTest.Entities.ServicoPrestado
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cadastrar Prestação de Serviço</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.FornecedorId, new { Value = Model.FornecedorId })
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClienteId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.ClienteId, new List<SelectListItem>(), new { id = "cboCliente", @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.ClienteId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control text-right", id = "dtServicoPrestado" } })
+                @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control text-right", id = "txtValor" } })*@
+                @Html.TextBoxFor(model => model.Valor, "{0:n2}", new { @class = "form-control text-right decimal_input" })
+                @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Tipo, MalweeTest.Entities.TipoServico.List, "", new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/validations_pt-br")
+}
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#dtServicoPrestado").val("");
+        CarregarClientes();
+    });
+
+
+     function CarregarClientes() {
+
+        $('#cboCliente').find('option').remove().end();
+
+        $.ajax({
+            url: '@Url.Action("CarregarClientes", "Cliente")',
+            type: 'GET',
+            success: function (result) {
+                $("#cboCliente").append($("<option></option>").text("").val(0));
+
+                $.each(result, function (index, item) {
+                    $("#cboCliente").append($("<option></option>").text(item.Nome).val(item.Id));
+                });
+            },
+            error: function (result) {
+                alert(result);
+            }
+        });
+    }
+</script>

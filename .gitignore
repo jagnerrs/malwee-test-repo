@@ -3,3 +3,9 @@
 ################################################################################
 
 /MalweeTestApplication/MalweeTest.Web/bin
+/MalweeTestApplication/MalweeTest.Data/bin/Debug
+/MalweeTestApplication/MalweeTest.Data/obj/Debug
+/MalweeTestApplication/MalweeTest.Entities/bin/Debug
+/MalweeTestApplication/MalweeTest.Entities/obj/Debug
+/MalweeTestApplication/MalweeTest.Web/obj/Debug
+/MalweeTestApplication/.vs/MalweeTestApplication/v15/Server/sqlite3

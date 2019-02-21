@@ -1,0 +1,23 @@
+﻿@using MalweeTest.Entities
+@model List<List<ServicoPrestado>>
+
+<table class="table">
+    <tr>
+        <th>Mês</th>
+        <th>Cliente</th>
+        <th class="text-right">Valor Total</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            <tr>
+                <td>@(item[i].Data.Month)</td>
+                <td>@(item[i].Cliente.Nome)</td>
+                <td class="text-right">@(((decimal)item[i].Valor).ToString("N2"))</td>
+            </tr>
+        }
+    }
+
+</table>

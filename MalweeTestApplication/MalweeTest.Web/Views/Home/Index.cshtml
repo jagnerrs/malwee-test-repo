@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Clientes Top 3</h2>
+        <p>Os 3 clientes que mais gastaram em serviços por mês no ano atual</p>
+        @Html.Action("TopClientesPorMes", "ServicoPrestado")
+    </div>
+    <div class="col-md-12">
+        <h2>Custo Médio</h2>
+        <p>Média de valor cobrado por fornecedor e tipo de serviço.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Visualizar &raquo;</a></p>
+    </div>
+    <div class="col-md-12">
+        <h2>Fornecedores Inativos</h2>
+        <p>Lista de fornecedores sem prestar atendimento por mês no ano atual.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Visualizar &raquo;</a></p>
+    </div>
+</div>

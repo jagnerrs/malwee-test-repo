@@ -1,0 +1,34 @@
+﻿@using MalweeTest.Entities
+@model IEnumerable<ServicoPrestado>
+
+@{
+    ViewBag.Title = "Relatório de Serviços Prestados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Relatório de Serviços Prestados</h2>
+
+<table class="table">
+    <tr>
+        <th>Cliente</th>
+        <th>Bairro</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+        <th>Tipo de Serviço</th>
+        <th class="text-right">Valor</th>
+        <th class="text-right">Data atendimento</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@(item.Cliente.Nome)</td>
+        <td>@(item.Cliente.Bairro)</td>
+        <td>@(item.Cliente.Cidade)</td>
+        <td>@(item.Cliente.Estado)</td>
+        <td>@(TipoServico.Description(item.Tipo))</td>
+        <td class="text-right">@(((decimal)item.Valor).ToString("N2"))</td>
+        <td class="text-right">@(item.Data.ToShortDateString())</td>
+    </tr>
+}
+
+</table>

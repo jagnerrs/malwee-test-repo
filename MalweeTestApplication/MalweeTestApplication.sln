@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MalweeTestApplication", "MalweeTestApplication\MalweeTestApplication.csproj", "{0865BCC7-A85A-4D30-BADD-5B07EDADE6C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MalweeTest.Entities", "MalweeTest.Entities\MalweeTest.Entities.csproj", "{DFF16705-3825-4374-A7AA-3D53016BC75C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MalweeTest.Data", "MalweeTest.Data\MalweeTest.Data.csproj", "{12489971-1783-4629-B7CA-9411277DADCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MalweeTest.Web", "MalweeTest.Web\MalweeTest.Web.csproj", "{0865BCC7-A85A-4D30-BADD-5B07EDADE6C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,6 +15,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFF16705-3825-4374-A7AA-3D53016BC75C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF16705-3825-4374-A7AA-3D53016BC75C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF16705-3825-4374-A7AA-3D53016BC75C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF16705-3825-4374-A7AA-3D53016BC75C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12489971-1783-4629-B7CA-9411277DADCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12489971-1783-4629-B7CA-9411277DADCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12489971-1783-4629-B7CA-9411277DADCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12489971-1783-4629-B7CA-9411277DADCB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0865BCC7-A85A-4D30-BADD-5B07EDADE6C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0865BCC7-A85A-4D30-BADD-5B07EDADE6C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0865BCC7-A85A-4D30-BADD-5B07EDADE6C8}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,0 +1,84 @@
+﻿@using MalweeTest.Entities;
+@model FilterServicoPrestadoViewModel
+
+<div id="winFiltroRelServicosPrestados" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title">Relatório de Serviços Prestados</h3>
+            </div> <!-- /.modal-header -->
+            <div class="modal-body">
+                @using (Html.BeginForm("Report", "ServicoPrestado", FormMethod.Post, new { id = "frmRelServicosPrestados", @class = "form-horizontal" }))
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DataInicio, htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(model => model.DataInicio, new { @class = "form-control text-right", placeholder = "Data início", id = "txtPeriodoDe" })
+                        </div> <!-- /.col -->
+                        @Html.LabelFor(model => model.DataFim, htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(model => model.DataFim, new { @class = "form-control text-right", placeholder = "Data fim", id = "txtPeriodoFim" })
+                        </div> <!-- /.col -->
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ValorMinimo, htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(model => model.ValorMinimo, "{0:n2}", new { @class = "form-control text-right", placeholder = "Valor mínimo" })
+                        </div> <!-- /.col -->
+                        @Html.LabelFor(model => model.ValorMaximo, htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(model => model.ValorMaximo, "{0:n2}", new { @class = "form-control text-right", placeholder = "Valor máximo" })
+                        </div> <!-- /.col -->
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Cliente, htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Cliente, Model.DropDownClientes, "Selecione o Cliente", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TipoServico, htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.TipoServico, Model.DropDownTipoServico, "Selecione o Tipo", new { @class = "form-control" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Estado, new { @class = "form-control text-right" })
+                        </div> <!-- /.col -->
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Cidade, new { @class = "form-control text-right" })
+                        </div> <!-- /.col -->
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "control-label col-md-1" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Bairro, new { @class = "form-control text-right" })
+                        </div> <!-- /.col -->
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary pull-right">Gerar</button>
+                        </div>
+                    </div>
+                }
+            </div> <!-- /.modal-body -->
+        </div> <!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#txtPeriodoDe").val("");
+        $("#txtPeriodoFim").val("");
+    });
+
+</script>
