@@ -14,5 +14,10 @@ namespace MalweeTest.Entities
         [Column("NOME")]
         public string Nome { get; set; }
 
+        public override string ToString()
+        {
+            return Nome;
+        }
+
     }
 }

@@ -2,20 +2,58 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
-    <div class="col-md-12">
-        <h2>Clientes Top 3</h2>
-        <p>Os 3 clientes que mais gastaram em serviços por mês no ano atual</p>
-        @Html.Action("TopClientesPorMes", "ServicoPrestado")
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <h2>Clientes Top 3</h2>
+                </button>
+                <p>Os 3 clientes que mais gastaram em serviços por mês no ano atual</p>
+            </h5>
+        </div>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <div class="col-md-12">
+                    @Html.Action("TopClientesPorMes", "ServicoPrestado")
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-12">
-        <h2>Custo Médio</h2>
-        <p>Média de valor cobrado por fornecedor e tipo de serviço.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Visualizar &raquo;</a></p>
+
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <h2>Custo Médio</h2>
+                </button>
+                <p>Média de valor cobrado por fornecedor e tipo de serviço.</p>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <div class="col-md-12">
+                    @Html.Action("CustoMedioPorFornecedor", "ServicoPrestado")
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-12">
-        <h2>Fornecedores Inativos</h2>
-        <p>Lista de fornecedores sem prestar atendimento por mês no ano atual.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Visualizar &raquo;</a></p>
+
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <h2>Fornecedores Inativos</h2>
+                </button>
+                <p>Lista de fornecedores sem prestar atendimento por mês no ano atual.</p>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <div class="col-md-12">
+                    @Html.Action("FornecedoresInativos", "Fornecedor")
+                </div>
+            </div>
+        </div>
     </div>
 </div>

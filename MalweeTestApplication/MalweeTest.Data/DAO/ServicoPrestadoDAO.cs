@@ -1,4 +1,5 @@
 ﻿using MalweeTest.Entities;
+using MalweeTest.Entities.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -116,21 +117,77 @@ namespace MalweeTest.Data.DAO
             }
         }
 
-        public List<List<ServicoPrestado>> GetTopClientesPorMes()
+        public List<List<TopClienteViewModel>> GetTopClientesPorMes()
         {
             try
             {
                 using (var context = new ApplicationDbContext())
                 {
+                    // recupera todos os serviços prestados
                     var _list = GetAll();
-               
-                    var _result = _list.OrderBy(o => o.Data.Year)
-                                       .ThenBy(o => o.Data.Month)
-                                       .ThenByDescending(o => o.Valor)
-                                       .GroupBy(o => o.Data.Month)
+
+                    // filtra somente os registros do ano atual
+                    _list = _list.Where(o => o.Data.Year == DateTime.Today.Year).ToList();
+
+
+                    var query = from e in _list
+                                group e by new { e.Cliente, e.Data.Month } into eg
+                                select new { eg.Key.Cliente, eg.Key.Month, Valor = eg.Sum(rl => rl.Valor) };
+
+
+                    var _clientes = new List<TopClienteViewModel>();
+
+                    foreach (var item in query.ToList())
+                    {
+                        TopClienteViewModel topCliente = new TopClienteViewModel();
+                        topCliente.Cliente = item.Cliente;
+                        topCliente.Mes = item.Month;
+                        topCliente.Valor = (decimal)item.Valor;
+
+                        _clientes.Add(topCliente);
+                    }
+
+                    var _result = _clientes.GroupBy(o => o.Mes)
+                                           .Select(o => o.ToList())
+                                           .ToList();
+
+
+                    return _result;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public List<List<CustoMedioViewModel>> GetCustoMedioPorFornecedor()
+        {
+            try
+            {
+                using (var context = new ApplicationDbContext())
+                {
+                    var _servicos = GetAll();
+
+                    var query = from e in _servicos
+                                group e by new { e.Fornecedor, e.Tipo } into eg
+                                select new { eg.Key.Fornecedor, eg.Key.Tipo, CustoMedio = eg.Average(rl => rl.Valor) };
+
+                    var _list = new List<CustoMedioViewModel>();
+
+                    foreach (var item in query.ToList())
+                    {
+                        CustoMedioViewModel custoMedio = new CustoMedioViewModel();
+                        custoMedio.Fornecedor = item.Fornecedor;
+                        custoMedio.TipoServico = TipoServico.Description(item.Tipo);
+                        custoMedio.Valor = (decimal)item.CustoMedio;
+
+                        _list.Add(custoMedio);
+                    }
+
+                    var _result = _list.GroupBy(o => o.Fornecedor)
                                        .Select(o => o.ToList())
                                        .ToList();
-
 
                     return _result;
 

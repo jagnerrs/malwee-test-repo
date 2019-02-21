@@ -1,12 +1,9 @@
 ﻿using MalweeTest.Data;
 using MalweeTest.Data.DAO;
 using MalweeTest.Entities;
+using MalweeTest.Entities.ViewModel;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MalweeTest.Web.Controllers
@@ -79,6 +76,17 @@ namespace MalweeTest.Web.Controllers
             var servicosPrestados = _servicoPrestadoDAO.GetTopClientesPorMes();
 
             return PartialView(servicosPrestados);
+        }
+
+        /// <summary>
+        /// Média de valor cobrado por fornecedor e tipo de serviço
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult CustoMedioPorFornecedor()
+        {
+            var custos = _servicoPrestadoDAO.GetCustoMedioPorFornecedor();
+
+            return PartialView(custos);
         }
     }
 }

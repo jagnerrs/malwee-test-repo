@@ -24,5 +24,10 @@ namespace MalweeTest.Entities
         [StringLength(2, MinimumLength = 2)]
         public string Estado { get; set; }
 
+
+        public override string ToString()
+        {
+            return Nome;
+        }
     }
 }

@@ -1,0 +1,22 @@
+﻿@using MalweeTest.Entities.ViewModel
+@model List<List<FornecedorInativoViewModel>>
+
+<table class="table">
+    <tr>
+        <th>Mês</th>
+        <th>Fornecedor</th>
+    </tr>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr rowspan="3">
+            <td style="background-color: lightgray" colspan="3">@(Util.MonthDescription(Model[i][0].Mes))</td>
+            @foreach(var subitem in Model[i])
+            {
+                <tr>
+                    <td></td>
+                    <td>@(subitem.Fornecedor.Nome)</td>
+                </tr>
+            }
+        </tr>
+     }
+</table>

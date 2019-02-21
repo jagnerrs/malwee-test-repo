@@ -1,0 +1,25 @@
+﻿@using MalweeTest.Entities.ViewModel
+@model List<List<CustoMedioViewModel>>
+
+<table class="table">
+    <tr>
+        <th>Fornecedor</th>
+        <th>Tipo de Serviço</th>
+        <th class="text-right">Custo Médio</th>
+    </tr>
+
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr rowspan="3">
+            <td style="background-color: lightgray" colspan="3">@(Model[i][0].Fornecedor.Nome)</td>
+            @foreach (var subitem in Model[i])
+            {
+                <tr>
+                    <td></td>
+                    <td>@(subitem.TipoServico)</td>
+                    <td class="text-right">@(subitem.Valor.ToString("N2"))</td>
+                </tr>
+            }
+        </tr>
+     }
+</table>

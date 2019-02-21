@@ -9,3 +9,4 @@
 /MalweeTestApplication/MalweeTest.Entities/obj/Debug
 /MalweeTestApplication/MalweeTest.Web/obj/Debug
 /MalweeTestApplication/.vs/MalweeTestApplication/v15/Server/sqlite3
+*.suo

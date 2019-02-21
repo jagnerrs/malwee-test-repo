@@ -178,6 +178,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -238,11 +239,11 @@
     <Content Include="Views\ServicoPrestado\FilterReport.cshtml" />
     <Content Include="Views\ServicoPrestado\Report.cshtml" />
     <Content Include="Views\Shared\TopClientesPorMes.cshtml" />
+    <Content Include="Views\Shared\FornecedoresInativos.cshtml" />
+    <Content Include="Views\Shared\CustoMedioPorFornecedor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cliente\" />
-    <Folder Include="Views\Fornecedor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
